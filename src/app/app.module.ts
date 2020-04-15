@@ -5,11 +5,13 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LayoutComponent } from './components/layout/layout.component';
 import { GridsterModule } from 'angular-gridster2';
+import { ImageEgComponent } from './components/image-eg/image-eg.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    LayoutComponent
+    LayoutComponent,
+    ImageEgComponent
   ],
   imports: [
     BrowserModule,
