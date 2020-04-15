@@ -1,0 +1,14 @@
+<div class="gridster-wrapper">
+  <gridster [options]="options">
+      <ul>
+      <gridster-item *ngFor="let item of imageList" [item]="item">
+          <li>
+            <img src={{item.url}}>
+            <button class="remove-button" (click)="removeItem(item.id)">
+                <div> &times; </div>
+            </button>
+          </li>
+       </gridster-item>
+      </ul>
+  </gridster>
+</div>
