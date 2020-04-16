@@ -2,6 +2,12 @@
   display: flex;
   margin: 20px 100px;
 
+  .export-btn{
+    float: right;
+    button{
+      border:none;
+    }
+  }
   gridster {
     background: #34495e;
     display: flex;

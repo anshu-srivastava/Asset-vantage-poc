@@ -1,6 +1,8 @@
 import { Component, OnInit} from '@angular/core';
 import { GridsterConfig, GridsterItem } from 'angular-gridster2';
 import { UUID } from 'angular2-uuid';
+import * as html2pdf from 'html2pdf.js';
+
 
 @Component({
   selector: 'app-image',
@@ -10,6 +12,7 @@ import { UUID } from 'angular2-uuid';
 export class ImageEgComponent implements OnInit {
   temArray = [];
   imageUrl: any;
+
   imageList = [
     {
       id: 1,
@@ -80,6 +83,24 @@ export class ImageEgComponent implements OnInit {
     this.temArray = this.imageList;
     const item = this.temArray.find(d => d.id === id);
     this.temArray.splice(this.temArray.indexOf(item), 1);
+  }
+
+  exportDashboard() {
+    // instantiate jsPDF
+    const element = document.getElementById('dashboard');
+    const opt = {
+      margin:       1,
+      filename:     'dashbosrd.pdf',
+      image:        { type: 'jpeg', quality: 0.98 },
+      html2canvas:  { scale: 2 },
+      jsPDF:        { unit: 'in', format: 'letter', orientation: 'portrait' }
+    };
+
+    // New Promise-based usage:
+    html2pdf().set(opt).from(element).save();
+
+    // Old monolithic-style usage:
+    html2pdf(element, opt);
   }
 
 }

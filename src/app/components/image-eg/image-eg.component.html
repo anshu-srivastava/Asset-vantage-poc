@@ -1,5 +1,8 @@
-<div class="gridster-wrapper">
-  <gridster [options]="options">
+<div  class="gridster-wrapper">
+  <div class="export-btn">
+    <button (click)="exportDashboard()">Export</button>
+  </div>
+  <gridster id="dashboard" [options]="options">
       <ul>
       <gridster-item *ngFor="let item of imageList" [item]="item">
           <li>
