@@ -1,10 +1,15 @@
 .gridster-wrapper {
   display: flex;
+  margin: 20px 100px;
+
   gridster {
     background: #34495e;
     display: flex;
     height: calc(100vh - 40px);
     flex-direction: column;
+    gridster-item{
+       width: auto !important;
+    }
 
     button {
       height: 30px;
@@ -16,16 +21,16 @@
       position: absolute;
       top: 0;
       right: 0;
+      cursor: pointer;
       span{
         font-size: 22px;
       }
     }
     li{
       list-style: none;
-      cursor: pointer;
 
       img{
-        width: -webkit-fill-available;
+        width: auto;     //-webkit-fill-available
         height: -webkit-fill-available;
         display: -webkit-box;
       }

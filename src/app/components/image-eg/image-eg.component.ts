@@ -9,6 +9,7 @@ import { UUID } from 'angular2-uuid';
 })
 export class ImageEgComponent implements OnInit {
   temArray = [];
+  imageUrl: any;
   imageList = [
     {
       id: 1,
@@ -37,10 +38,6 @@ export class ImageEgComponent implements OnInit {
     {
       id: 7,
       url: '../../../assets/ray-hennessy-mpw37yXc_WQ-unsplash.jpg'
-    },
-    {
-      id: 8,
-      url: '../../../assets/boris-smokrovic-HWwF4OnXAdM-unsplash.jpg'
     }
   ];
 
@@ -55,7 +52,6 @@ export class ImageEgComponent implements OnInit {
   };
 
   public dashboard: GridsterItem[] = [];
-  imageUrl: any;
 
   /* public dashboard: GridsterItem[] = [
     {cols: 2, rows: 1, y: 0, x: 0},
@@ -72,18 +68,18 @@ export class ImageEgComponent implements OnInit {
 
   addItem() {
     this.dashboard.push({
-      cols: 2,
+      cols: 0,
       id: UUID.UUID(),
-      rows: 4,
+      rows: 0,
       x: 0,
       y: 0
     });
   }
 
   removeItem(id: string) {
-    this.temArray = this.dashboard;
-    const item = this.dashboard.find(d => d.id === id);
-    this.dashboard.splice(this.dashboard.indexOf(item), 1);
+    this.temArray = this.imageList;
+    const item = this.temArray.find(d => d.id === id);
+    this.temArray.splice(this.temArray.indexOf(item), 1);
   }
 
 }
