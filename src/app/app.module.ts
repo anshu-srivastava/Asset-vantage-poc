@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { LayoutComponent } from './components/layout/layout.component';
 import { GridsterModule } from 'angular-gridster2';
 import { ImageEgComponent } from './components/image-eg/image-eg.component';
+import { ChartsModule } from 'ng2-charts';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { ImageEgComponent } from './components/image-eg/image-eg.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    GridsterModule
+    GridsterModule,
+    ChartsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
