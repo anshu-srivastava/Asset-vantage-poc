@@ -1,14 +1,14 @@
 <div class="gridster-wrapper row">
   <div class="toolbar">
-    <button class="add-btn" (click)="layoutService.addItem()">Add Item</button>
+    <button class="add-btn" (click)="addItem()">Add Item</button>
     <button  class="export-btn" (click)="exportDashboard()">Export</button>
     <div  class="example">
       <a href="#" routerLink="/image">Click to see more example</a>
     </div>
   </div>
   <gridster id="dashboard-layout" [options]="options">
-    <gridster-item *ngFor="let item of layout" [item]="item">
-      <button (click)="layoutService.deleteItem(item)">
+    <gridster-item *ngFor="let item of dashboard" [item]="item">
+      <button (click)="removeItem($event,item)">
         <span> &times; </span>
       </button>
     </gridster-item>
