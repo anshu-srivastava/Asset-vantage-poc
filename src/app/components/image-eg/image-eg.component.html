@@ -1,0 +1,17 @@
+<div  class="gridster-wrapper">
+  <div class="export-btn">
+    <button (click)="exportDashboard()">Export Images</button>
+  </div>
+  <gridster id="dashboard" [options]="options">
+      <ul>
+      <gridster-item *ngFor="let item of imageList" [item]="item">
+          <li>
+            <img src={{item.url}}>
+            <button class="remove-button" (click)="removeItem(item.id)">
+                <div> &times; </div>
+            </button>
+          </li>
+       </gridster-item>
+      </ul>
+  </gridster>
+</div>
