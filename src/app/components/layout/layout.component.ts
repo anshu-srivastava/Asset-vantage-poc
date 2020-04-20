@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { GridsterConfig, GridsterItem } from 'angular-gridster2';
 import { LayoutService } from 'src/app/services/layout.service';
-import * as html2pdf from 'html2pdf.js';
+import * as jspdf from 'jspdf';
+import html2canvas from 'html2canvas';
 
 @Component({
   selector: 'app-layout',
@@ -9,7 +10,6 @@ import * as html2pdf from 'html2pdf.js';
   styleUrls: ['./layout.component.scss']
 })
 export class LayoutComponent implements OnInit {
-
   constructor(private layoutService: LayoutService) { }
 
   ngOnInit() {
@@ -25,20 +25,22 @@ export class LayoutComponent implements OnInit {
 
   exportDashboard() {
     // instantiate jsPDF
-    const element = document.getElementById('dashboard');
-    const opt = {
-      margin:       1,
-      filename:     'dashbosrd.pdf',
-      image:        { type: 'jpeg', quality: 0.98 },
-      html2canvas:  { scale: 2 },
-      jsPDF:        { unit: 'in', format: 'letter', orientation: 'portrait' }
-    };
+    {
+      const data = document.getElementById('dashboard-layout');
+      html2canvas(data).then(canvas => {
+        // Few necessary setting options
+        const imgWidth = 208;
+        const pageHeight = 295;
+        const imgHeight = canvas.height * imgWidth / canvas.width;
+        const heightLeft = imgHeight;
 
-    // New Promise-based usage:
-    html2pdf().set(opt).from(element).save();
-
-    // Old monolithic-style usage:
-    html2pdf(element, opt);
+        const contentDataURL = canvas.toDataURL('image/png');
+        const pdf = new jspdf('p', 'mm', 'a4'); // A4 size page of PDF
+        const position = 0;
+        pdf.addImage(contentDataURL, 'PNG', 0, position, imgWidth, imgHeight);
+        pdf.save('MYPdf.pdf'); // Generated PDF
+      });
+    }
   }
 
 }

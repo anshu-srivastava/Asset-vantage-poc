@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { GridsterConfig, GridsterItem } from 'angular-gridster2';
+import { GridsterConfig, GridsterItem, GridType, CompactType } from 'angular-gridster2';
 import { UUID } from 'angular2-uuid';
 
 @Injectable({
@@ -8,10 +8,12 @@ import { UUID } from 'angular2-uuid';
 export class LayoutService {
 
   public options: GridsterConfig = {
+    gridType: GridType.Fit,
+    compactType: CompactType.None,
+    pushItems: true,
     draggable: {
       enabled: true
     },
-    pushItems: true,
     resizable: {
       enabled: true
     }
